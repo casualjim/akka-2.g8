@@ -11,7 +11,7 @@ resolvers ++= Seq(
 )
 
 libraryDependencies ++= Seq(
-  "com.typesafe.akka"                 % "akka-kernel"        % "$akka_version$",
+  "com.typesafe.akka"                 % "akka-kernel"       % "$akka_version$",
   "org.scalaz"                       %% "scalaz-core"       % "$scalaz_version$",
   "org.specs2"                       %% "specs2"            % "$specs2_version$"             % "test",
   "org.scala-tools.testing"          %% "scalacheck"        % "1.9"               % "test",
