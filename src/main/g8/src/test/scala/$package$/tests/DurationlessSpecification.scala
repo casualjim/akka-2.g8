@@ -20,6 +20,6 @@ trait DurationlessSpecification extends BaseSpecification
   /** transform a context to a result to allow the implicit passing of a context to each example */
   implicit def contextToResult[T](t: MatchResult[T])(implicit context: Context = defaultContext): Result = context(asResult(t))
   /** use an available outside context to transform a function returning a MatchResult into a result */
-  implicit def outsideFunctionToResult[T, S](implicit o: Outside[T]) = (f: T ⇒ MatchResult[S]) ⇒ { o((t1: T) ⇒ f(t1).toResult) }
+  implicit def outsideFunctionToResult[T, S](implicit o: Outside[T]) = (f: T => MatchResult[S]) => { o((t1: T) => f(t1).toResult) }
 
 }
