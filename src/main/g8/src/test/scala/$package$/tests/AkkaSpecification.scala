@@ -9,6 +9,9 @@ import akka.dispatch.Await
 import java.util.concurrent.TimeoutException
 import akka.util.duration._
 import akka.event.LoggingAdapter
+import org.specs2.Specification
+import org.specs2.time.NoTimeConversions
+
 
 object AkkaSpecification {
   val testConf: Config = ConfigFactory.parseString("""
@@ -43,7 +46,7 @@ object AkkaSpecification {
 
 }
 
-abstract class AkkaSpecification(_system: ActorSystem) extends TestKit(_system) with DurationlessSpecification {
+abstract class AkkaSpecification(_system: ActorSystem) extends TestKit(_system) with Specification with NoTimeConversions {
 
   @transient lazy val logger: LoggingAdapter = akka.event.Logging(_system, getClass)
 
