@@ -8,6 +8,7 @@ import akka.actor.{ ActorSystemImpl, ActorSystem }
 import akka.dispatch.Await
 import java.util.concurrent.TimeoutException
 import akka.util.duration._
+import akka.event.LoggingAdapter
 
 object AkkaSpecification {
   val testConf: Config = ConfigFactory.parseString("""
@@ -42,7 +43,9 @@ object AkkaSpecification {
 
 }
 
-abstract class AkkaSpecification(_system: ActorSystem) extends TestKit(_system) with DurationlessSpecification with Logging {
+abstract class AkkaSpecification(_system: ActorSystem) extends TestKit(_system) with DurationlessSpecification {
+
+  @transient lazy val logger: LoggingAdapter = akka.event.Logging(_system, getClass)
 
   def this(config: Config) = this(ActorSystem(AkkaSpecification.getCallerName, config.withFallback(AkkaSpecification.testConf)))
 
