@@ -55,14 +55,14 @@ abstract class AkkaSpecification(_system: ActorSystem) extends TestKit(_system) 
 
   def this() = this(ActorSystem(AkkaSpecification.getCallerName, AkkaSpecification.testConf))
 
-  override def map(fs: ⇒ Fragments) = super.map(fs) ^ Step(stopActors)
+  override def map(fs: => Fragments) = super.map(fs) ^ Step(stopActors)
 
   private def stopActors = {
     import scala.util.control.Exception.ignoring
     ignoring(classOf[Throwable]) {
       system.shutdown()
       try Await.ready(system.asInstanceOf[ActorSystemImpl].terminationFuture, 5 seconds) catch {
-        case _: TimeoutException ⇒ system.log.warning("Failed to stop [{}] within 5 seconds", system.name)
+        case _: TimeoutException => system.log.warning("Failed to stop [{}] within 5 seconds", system.name)
       }
     }
   }
