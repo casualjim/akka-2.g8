@@ -1,0 +1,52 @@
+## generic files to ignore
+*~
+*.lock
+*.DS_Store
+*.swp
+*.out
+
+# rails specific
+*.sqlite3
+config/database.yml
+log/*
+tmp/*
+
+# java specific
+*.class
+
+# python specific
+*.pyc
+
+# xcode/iphone specific
+build/*
+*.pbxuser
+*.mode2v3
+*.mode1v3
+*.perspective
+*.perspectivev3
+*~.nib
+
+# akka specific
+logs/*
+
+# sbt specific
+target/
+boot/
+lib_managed/
+src_managed/
+project/plugins/project/
+
+# eclipse specific
+.metadata
+jrebel.lic
+.idea/workspace.xml
+.idea/bashsupport_project.xml
+
+*.iml
+*.ipr
+*.iws
+
+.idea
+.settings
+.classpath
+.project
