@@ -36,7 +36,7 @@ object AkkaSpecification {
   def getCallerName: String = getNonBaseCallerName("AkkaSpecification")
 
   def getNonBaseCallerName(name: String): String = {
-    val s = Thread.currentThread.getStackTrace map (_.getClassName) drop 1 dropWhile (_ matches ".*%s.?$".format(name))
+    val s = Thread.currentThread.getStackTrace map (_.getClassName) drop 1 dropWhile (_ matches ".*%s.?\$".format(name))
     s.head.replaceFirst(""".*\.""", "").replaceAll("[^a-zA-Z_0-9]", "_")
   }
 
