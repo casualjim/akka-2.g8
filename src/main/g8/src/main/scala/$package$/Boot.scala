@@ -50,7 +50,7 @@ class Boot extends Bootable {
    * Shutdown actor systems here.
    */
   def shutdown() {
-    
+    system.shutdown()
   }
 
 }
